@@ -5,7 +5,7 @@ public class QuickSort {
         if (low >= high) {
             return;
         }
-        int mid = partition(a,low,high);
+        int mid = partition2(a,low,high);
         quickSort(a, low, mid - 1);
         quickSort(a, mid + 1, high);
     }
@@ -34,6 +34,23 @@ public class QuickSort {
           return j;  
     }
     
+    public static int partition2(int[] a, int low, int high) {
+    	int i, j, x;
+    	
+    	i = low;
+    	j = low + 1;
+    	x = a[i];
+    	for(; j <= high; j++) {
+    		if(a[j] < x) {
+    			i++;
+    			swap(a, i, j);
+    		}
+    	}
+    	swap(a, low, i);
+    	
+    	return i;
+    }
+    
     public static void swap(int a[], int i, int j) {
         int temp = a[i];
         a[i] = a[j];
@@ -48,8 +65,11 @@ public class QuickSort {
     }
     
     public static void main(String args[]){  
-        int[]a={15,24,25,68,12,10,45,18,27};  
+        int[]a={15,24,25,68,12,10,45,18,27}; 
+        System.out.print("before sort: ");
+        printArray(a);
         quickSort(a,0,a.length-1); 
+        System.out.print(" after sort: ");
         printArray(a);
     }  
 }
