@@ -5,7 +5,7 @@ package algorithm.string;
  * 给一个字符串s1,和一个小串s2，求算法能在s1中找到包含s2里所有字符的最小子串
  *
  */
-public class MinSusString {
+public class MinSubString {
 
     /**
      * @param s1 document string 
@@ -66,12 +66,17 @@ public class MinSusString {
                 }
                 //收缩
                 hash_table[s1.charAt(p1)]--;
-                p1++;
                 
                 //0表示没出现过，count减1
                 if (hash_table[s1.charAt(p1)] == 0) {
                     count--;
                 }
+                
+                if (p1 < s1.length()-1) {
+                    p1++;
+				}
+                
+                
             }
         }
         
